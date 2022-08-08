@@ -26,7 +26,7 @@
 <style>
     .asterik {
     font-size: 20px;
-    line-height: 0px;
+    line-height: 1px;
     vertical-align: middle;
 }
 </style>

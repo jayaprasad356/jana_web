@@ -12,16 +12,6 @@ include_once('../includes/crud.php');
 $db = new Database();
 $db->connect();
 
-
-
-
-
-if (empty($_POST['type'])) {
-    $response['success'] = false;
-    $response['message'] = " Type is Empty";
-    print_r(json_encode($response));
-    return false;
-}
 $sql = "SELECT * FROM news_jobs";
 $db->sql($sql);
 $res = $db->getResult();

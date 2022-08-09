@@ -17,6 +17,13 @@ $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
 if ($num >= 1) {
+    foreach ($res as $row) {
+        $temp['id'] = $row['id'];
+        $temp['name'] = $row['name'];
+        $temp['image'] = DOMAIN_URL  .$row['image'];
+        $rows[] = $temp;
+        
+    }
     $response['success'] = true;
     $response['message'] = "Slides Listed Successfully";
     $response['data'] = $res;

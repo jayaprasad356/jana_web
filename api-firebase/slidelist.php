@@ -26,7 +26,7 @@ if ($num >= 1) {
     }
     $response['success'] = true;
     $response['message'] = "Slides Listed Successfully";
-    $response['data'] = $res;
+    $response['data'] = $rows;
     print_r(json_encode($response));
 
 }

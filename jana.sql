@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2022 at 12:42 AM
+-- Generation Time: Aug 09, 2022 at 11:59 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -60,7 +60,7 @@ CREATE TABLE `companies` (
   `id` int(11) NOT NULL,
   `company_name` text DEFAULT NULL,
   `job_title` text DEFAULT NULL,
-  `category` text DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
   `location` text DEFAULT NULL,
   `salary` text DEFAULT NULL,
   `image` text DEFAULT NULL,
@@ -71,8 +71,11 @@ CREATE TABLE `companies` (
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`id`, `company_name`, `job_title`, `category`, `location`, `salary`, `image`, `status`) VALUES
-(1, 'Jandroid  Tech Solutions', 'Frontend Developer', 'Trichy', 'Trichy', '3.8lakh', 'upload/images/1659713644.8223.jpg', 1);
+INSERT INTO `companies` (`id`, `company_name`, `job_title`, `category_id`, `location`, `salary`, `image`, `status`) VALUES
+(1, 'Jandroid  Tech Solutions', 'Frontend Developer', 5, 'Trichy', '3.8lakh', 'upload/images/1659713644.8223.jpg', 1),
+(2, 'lenzan Tech', 'backend Developer', 3, 'Karur', '9.0Lakh', 'upload/images/1851-2022-08-10.jpg', 1),
+(3, 'Sine Automobiles', 'Fitter', 5, 'Coimbatore', '45000', 'upload/images/4748-2022-08-10.jpg', 0),
+(4, 'MM Computer Centre', 'Data typing', 6, 'Madurai', '1.7 Lakh', 'upload/images/0722-2022-08-10.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -85,6 +88,7 @@ CREATE TABLE `news_jobs` (
   `job_title` text DEFAULT NULL,
   `company_name` text DEFAULT NULL,
   `company_address` text DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
   `email` text DEFAULT NULL,
   `phone_no` text DEFAULT NULL,
   `interview_date` text DEFAULT NULL,
@@ -102,10 +106,10 @@ CREATE TABLE `news_jobs` (
 -- Dumping data for table `news_jobs`
 --
 
-INSERT INTO `news_jobs` (`id`, `job_title`, `company_name`, `company_address`, `email`, `phone_no`, `interview_date`, `interview_time`, `emp_qualification`, `emp_experience`, `link`, `venue`, `salary`, `more_details`, `language`) VALUES
-(1, 'PHP Developer', 'Greymatter Works', 'Trichy', 'greymatter@gmail.com', '8428225519', '2022-07-07', '10.00-10.30 AM', 'B.E', '2years', 'htps:///gadfstfd.com', 'Bangalore', '1.5 Lakh', 'trailer', 'Tamil'),
-(4, 'Frontend Developer', 'lenzan Tech', '1,Bangalore,Tamilnadu', 'example@gmail.com', '1234567899', '2022-07-28', '12:24', 'B.E[IT]', '2 Years', 'https://ncbcugc.in', 'trichy', '2.5lakh', 'NA', 'English'),
-(5, 'backend Developer', 'gsgg', 'scbsch', 'dcbsgdid@gmail.com', '1234567890', '2022-07-14', '1.00-1.30 PM', 'scsv', '8yaers', 'https://ncbcugc.in', 'Bangalore', '3.8lakh', 'NA', 'Tamil');
+INSERT INTO `news_jobs` (`id`, `job_title`, `company_name`, `company_address`, `category_id`, `email`, `phone_no`, `interview_date`, `interview_time`, `emp_qualification`, `emp_experience`, `link`, `venue`, `salary`, `more_details`, `language`) VALUES
+(1, 'PHP Developer', 'Greymatter Works', 'Trichy', 1, 'greymatter@gmail.com', '8428225519', '2022-07-07', '10.00-10.30 AM', 'B.E', '2years', 'htps:///gadfstfd.com', 'Bangalore', '1.5 Lakh', 'trailer', 'Tamil'),
+(4, 'Frontend Developer', 'lenzan Tech', '1,Bangalore,Tamilnadu', 2, 'example@gmail.com', '1234567899', '2022-07-28', '12:24', 'B.E[IT]', '2 Years', 'https://ncbcugc.in', 'trichy', '2.5lakh', 'NA', 'English'),
+(5, 'backend Developer', 'gsgg', 'scbsch', 2, 'dcbsgdid@gmail.com', '1234567890', '2022-07-14', '1.00-1.30 PM', 'scsv', '8yaers', 'https://ncbcugc.in', 'Bangalore', '3.8lakh', 'NA', 'Tamil');
 
 -- --------------------------------------------------------
 
@@ -125,7 +129,7 @@ CREATE TABLE `slides` (
 --
 
 INSERT INTO `slides` (`id`, `name`, `image`, `status`) VALUES
-(3, 'Civil Engineer', 'upload/slides/9157-2022-08-05.png', 1);
+(1, 'Home', 'upload/slides/3440-2022-08-10.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +200,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `news_jobs`
@@ -208,7 +212,7 @@ ALTER TABLE `news_jobs`
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -282,7 +282,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'companies') {
         $tempRow['id'] = $row['id'];
         $tempRow['company_name'] = $row['company_name'];
         $tempRow['job_title'] = $row['job_title'];
-        $tempRow['category'] = $row['category'];
+        $tempRow['category_id'] = $row['category_id'];
         $tempRow['location'] = $row['location'];
         $tempRow['salary'] = $row['salary'];
         if(!empty($row['image'])){

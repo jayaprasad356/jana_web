@@ -26,6 +26,7 @@
                                 <tr>
                                
                                      <th data-field="operate1" data-events="actionEvents">View</th>
+                                     <th data-field="operate" data-events="actionEvents">Action</th>
                                     <th data-field="id" data-sortable="true">ID</th>
                                     <th data-field="job_title" data-sortable="true">Job Title</th>
                                     <th data-field="company_name" data-sortable="true">Company Name</th>
@@ -41,7 +42,6 @@
                                     <th data-field="salary" data-sortable="true" >Salary</th>
                                     <th data-field="more_details" data-sortable="true" >More Details</th>
                                     <th data-field="language" data-sortable="true" >Lanuguage</th>
-                                    <th data-field="operate" data-events="actionEvents">Action</th>
                                     
                                 </tr>
                             </thead>

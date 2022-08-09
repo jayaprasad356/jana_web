@@ -12,11 +12,40 @@ include_once('../includes/crud.php');
 $db = new Database();
 $db->connect();
 
-$sql = "SELECT * FROM news_jobs";
+if (empty($_POST['category_id'])) {
+    $response['success'] = false;
+    $response['message'] = "Category Id is Empty";
+    print_r(json_encode($response));
+    return false;
+}
+
+$category_id = $db->escapeString($_POST['category_id']);
+
+$sql = "SELECT * FROM news_jobs WHERE category_id = '$category_id'";
 $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
+
 if ($num >= 1) {
+    foreach ($res as $row){
+        $temp['id'] = $row['id'];
+        $temp['job_title'] = $row['job_title'];
+        $temp['company_name'] = $row['company_name'];
+        $temp['category_id'] = $row['category_id'];
+        $temp['company_address'] = $row['company_address'];
+        $temp['email'] = $row['email'];
+        $temp['phone_no'] = $row['phone_no'];
+        $temp['interview_date'] = $row['interview_date'];
+        $temp['interview_time'] = $row['interview_time'];
+        $temp['emp_qualification'] = $row['emp_qualification'];
+        $temp['emp_experience'] = $row['emp_experience'];
+        $temp['link'] = $row['link'];
+        $temp['venue'] = $row['venue'];
+        $temp['salary'] = $row['salary'];
+        $temp['more_details'] = $row['more_details'];
+        $temp['language'] = $row['language'];
+
+    }
     $response['success'] = true;
     $response['message'] = "News jobs Retrived Successfully";
     $response['data'] = $res;
@@ -30,8 +59,6 @@ else{
     print_r(json_encode($response));
 
 }
-
-
 
 
 ?>

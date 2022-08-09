@@ -12,28 +12,26 @@ include_once('../includes/crud.php');
 $db = new Database();
 $db->connect();
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM slides";
 $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
 if ($num >= 1) {
-    foreach ($res as $row) {
-        $temp['id'] = $row['id'];
-        $temp['name'] = $row['name'];
-        $temp['mobile'] = $row['mobile'];
-        $temp['pincode'] = $row['pincode'];     
-    }
     $response['success'] = true;
-    $response['message'] = "Users Retrived Successfully";
+    $response['message'] = "Slides Listed Successfully";
     $response['data'] = $res;
     print_r(json_encode($response));
 
 }
 else{
     $response['success'] = false;
-    $response['message'] = "Users Not Found";
+    $response['message'] = "Slides Not Found";
     $response['data'] = $res;
     print_r(json_encode($response));
 
 }
+
+
+
+
 ?>

@@ -25,7 +25,7 @@ $news_jobs_id = $_GET['id'];
                     <div class="box-body">
                     <table class="table table-bordered">
                         <?php
-                        $sql = "SELECT * FROM news_jobs WHERE id = $news_jobs_id";
+                        $sql = "SELECT *,categories.name AS category,news_jobs.id AS id FROM news_jobs,categories WHERE news_jobs.category_id = categories.id AND news_jobs.id = '$news_jobs_id'";
                         $db->sql($sql);
                         $res = $db->getResult();
                         $num = $db->numRows();
@@ -48,10 +48,13 @@ $news_jobs_id = $_GET['id'];
                                 <td><?php echo $res[0]['company_address'] ?></td>
                             </tr>
                             <tr>
+                                <th style="width: 200px">Category</th>
+                                <td><?php echo $res[0]['category'] ?></td>
+                            <tr>
+                            <tr>
                                 <th style="width: 200px"> Email</th>
                                 <td><?php echo $res[0]['email'] ?></td>
                             </tr>
-                            <tr>
                                 <th style="width: 200px">Phone Number</th>
                                 <td><?php echo $res[0]['phone_no'] ?></td>
                             </tr>

@@ -24,7 +24,7 @@
                                     <th data-field="id" data-sortable="true">ID</th>
                                     <th data-field="company_name" data-sortable="true"> Company Name</th>
                                     <th data-field="job_title" data-sortable="true">Job Title</th>
-                                    <th data-field="category" data-sortable="true">Category</th>
+                                    <th data-field="category_id" data-sortable="true">Category Id</th>
                                     <th data-field="location" data-sortable="true">  Location</th>
                                     <th data-field="salary" data-sortable="true">Salary</th>
                                     <th data-field="image">Image</th>

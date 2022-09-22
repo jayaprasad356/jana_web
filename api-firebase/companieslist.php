@@ -17,6 +17,17 @@ $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
 if ($num >= 1) {
+    foreach ($res as $row) {
+        $temp['id'] = $row['id'];
+        $temp['company_name'] = $row['company_name'];
+        $temp['job_title'] = $row['job_title'];
+        $temp['category'] = $row['category'];
+        $temp['location'] = $row['location'];
+        $temp['salary'] = $row['salary'];
+        $temp['image'] = DOMAIN_URL  .$row['image'];
+        $rows[] = $temp;
+        
+    }
     $response['success'] = true;
     $response['message'] = "Companies Retrived Successfully";
     $response['data'] = $res;

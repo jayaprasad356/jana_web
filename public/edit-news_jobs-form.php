@@ -14,10 +14,11 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['btnUpdate'])){
-    $error = array();
-    $job_title= $db->escapeString($_POST['job_title']);
+        $error = array();
+        $job_title= $db->escapeString($_POST['job_title']);
         $company_name = $db->escapeString($_POST['company_name']);
         $company_address = $db->escapeString($_POST['company_address']);
+        $category = $db->escapeString($_POST['category']);
         $email= $db->escapeString($_POST['email']);
         $phone_no = $db->escapeString($_POST['phone_no']);
         $interview_date = $db->escapeString($_POST['interview_date']);
@@ -39,6 +40,9 @@ if (isset($_POST['btnUpdate'])){
         }
         if (empty($company_address)) {
             $error['company_address'] = " <span class='label label-danger'>Required!</span>";
+        }
+        if (empty($category)) {
+            $error['category'] = " <span class='label label-danger'>Required!</span>";
         }
         if (empty($email)) {
             $error['email'] = " <span class='label label-danger'>Required!</span>";
@@ -76,9 +80,9 @@ if (isset($_POST['btnUpdate'])){
 
    
 
-    if (!empty($job_title) && !empty($company_name) && !empty($company_address) && !empty($email) && !empty($phone_no) && !empty($interview_date) && !empty($interview_time) && !empty($emp_qualification) && !empty($emp_experience) && !empty($link) && !empty($venue) && !empty($salary) && !empty($more_details) && !empty($language)) 
+    if (!empty($job_title) && !empty($company_name) && !empty($company_address) &&!empty($category) && !empty($email) && !empty($phone_no) && !empty($interview_date) && !empty($interview_time) && !empty($emp_qualification) && !empty($emp_experience) && !empty($link) && !empty($venue) && !empty($salary) && !empty($more_details) && !empty($language)) 
     {
-        $sql = "UPDATE news_jobs SET job_title='$job_title',company_name='$company_name',company_address='$company_address',email='$email',phone_no='$phone_no',interview_date='$interview_date',interview_time='$interview_time',emp_qualification='$emp_qualification',emp_experience='$emp_experience',link='$link',venue='$venue',salary='$salary',more_details='$more_details',language='$language' WHERE id=$ID";
+        $sql = "UPDATE news_jobs SET job_title='$job_title',company_name='$company_name',company_address='$company_address',category_id='$category',email='$email',phone_no='$phone_no',interview_date='$interview_date',interview_time='$interview_time',emp_qualification='$emp_qualification',emp_experience='$emp_experience',link='$link',venue='$venue',salary='$salary',more_details='$more_details',language='$language' WHERE id=$ID";
         $db->sql($sql);
         $news_result = $db->getResult();
 
@@ -131,17 +135,30 @@ foreach ($res as $row)
                     <div class="box-body">
                        <div class="row">
                             <div class="form-group">
-                                <div class='col-md-4'>
+                                <div class='col-md-3'>
                                     <label for="exampleInputEmail1">Job Title</label> <i class="text-danger asterik">*</i><?php echo isset($error['job_title']) ? $error['job_title'] : ''; ?>
                                     <input type="text" class="form-control" name="job_title"  value="<?php echo $data['job_title']?>" required>
                                 </div>
-                                <div class='col-md-4'>
+                                <div class='col-md-3'>
                                     <label for="exampleInputEmail1">Company Name</label> <i class="text-danger asterik">*</i><?php echo isset($error['company_name']) ? $error['company_name'] : ''; ?>
                                     <input type="text" class="form-control" name="company_name"  value="<?php echo $data['company_name']?>" required>
                                 </div>
-                                <div class='col-md-4'>
+                                <div class='col-md-3'>
                                     <label for="exampleInputEmail1">Company Address</label> <i class="text-danger asterik">*</i><?php echo isset($error['company_address']) ? $error['company_address'] : ''; ?>
                                     <input type="text" class="form-control" name="company_address"  value="<?php echo $data['company_address']?>" required>
+                                </div>
+                                <div class='col-md-3'>
+                                    <label for="">category</label><?php echo isset($error['category']) ? $error['category'] : ''; ?>
+                                    <select id='category' name="category" class='form-control' value="<?php echo $res[0]['category']; ?>">
+                                            <?php
+                                            $sql = "SELECT * FROM `categories`";
+                                            $db->sql($sql);
+                                            $result = $db->getResult();
+                                            foreach ($result as $value) {
+                                            ?>
+															 <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['category_id'] ? 'selected="selected"' : '';?>><?= $value['name'] ?></option>
+                                        <?php } ?>
+                                        </select>
                                 </div>
                             </div>
 

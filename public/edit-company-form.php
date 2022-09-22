@@ -65,7 +65,7 @@ if (isset($_POST['btnEdit'])) {
 				$db->sql($sql);
 			}
 			
-             $sql_query = "UPDATE companies SET company_name='$company_name',job_title='$job_title',category='$location',salary='$salary',status='$status'  WHERE id =  $ID";
+             $sql_query = "UPDATE companies SET company_name='$company_name',job_title='$job_title',category_id='$category',location='$location',salary='$salary',status='$status'  WHERE id =  $ID";
 			 $db->sql($sql_query);
              $update_result = $db->getResult();
 			if (!empty($update_result)) {
@@ -145,7 +145,7 @@ if (isset($_POST['btnCancel'])) { ?>
                                             $result = $db->getResult();
                                             foreach ($result as $value) {
                                             ?>
-                                                  <option value='<?= $value['id'] ?>'><?= $value['name'] ?></option>
+															 <option value='<?= $value['id'] ?>' <?= $value['id']==$res[0]['category_id'] ? 'selected="selected"' : '';?>><?= $value['name'] ?></option>
                                         <?php } ?>
                                         </select>
                                 </div>

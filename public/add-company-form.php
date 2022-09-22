@@ -17,7 +17,6 @@ if (isset($_POST['btnAdd'])) {
         $category = $db->escapeString(($_POST['category']));
         $location = $db->escapeString(($_POST['location']));
         $salary = $db->escapeString(($_POST['salary']));
-        $status = $db->escapeString(($_POST['status']));
         
         // get image info
         $menu_image = $db->escapeString($_FILES['company_image']['name']);
@@ -66,7 +65,7 @@ if (isset($_POST['btnAdd'])) {
 
             
            
-            $sql_query = "INSERT INTO companies (company_name,job_title,category,location,salary,image,status)VALUES('$company_name','$job_title','$category','$location','$salary','$upload_image',0)";
+            $sql_query = "INSERT INTO companies (company_name,job_title,category_id,location,salary,image,status)VALUES('$company_name','$job_title','$category','$location','$salary','$upload_image',0)";
             $db->sql($sql_query);
             $result = $db->getResult();
             if (!empty($result)) {
